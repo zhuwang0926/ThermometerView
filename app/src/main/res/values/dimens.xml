@@ -5,7 +5,7 @@
     <dimen name="spi_12">12sp</dimen>
     <dimen name="spi_15">15sp</dimen>
 
-
+    <dimen name="dpi_8">8dp</dimen>
     <dimen name="dpi_10">10dp</dimen>
     <dimen name="dpi_15">15dp</dimen>
     <dimen name="dpi_16">16dp</dimen>
