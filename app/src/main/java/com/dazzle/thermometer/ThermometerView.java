@@ -9,22 +9,22 @@ import android.util.Log;
 import android.view.View;
 
 
-public class Thermometer extends View {
+public class ThermometerView extends View {
     private static final String TAG = "Thermometer";
 
     Context mContext;
-    private String temperature;
+    private String temperature = "35";
     private final float highTemp = 60;
 
     private Paint backgroundPaint;
     private Paint realityPaint;
     //margin 最大值不超过控件高度的三分之一
     private int margin = (int) getResources().getDimension(R.dimen.dpi_10);
-    public Thermometer(Context context) {
+    public ThermometerView(Context context) {
         super(context);
     }
 
-    public Thermometer(Context context, AttributeSet attrs) {
+    public ThermometerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         //背景的画笔
         backgroundPaint = new Paint();
@@ -36,7 +36,7 @@ public class Thermometer extends View {
         realityPaint.setTextSize(getResources().getDimension(R.dimen.spi_12));
     }
 
-    public Thermometer(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ThermometerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
