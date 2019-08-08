@@ -18,9 +18,8 @@ public class Thermometer extends View {
 
     private Paint backgroundPaint;
     private Paint realityPaint;
-
+    //margin 最大值不超过控件高度的三分之一
     private int margin = (int) getResources().getDimension(R.dimen.dpi_10);
-
     public Thermometer(Context context) {
         super(context);
     }
@@ -64,17 +63,19 @@ public class Thermometer extends View {
         //温度文字
         String T = fTemp + "°C";
         //圆开始的位置
-        int CircleStart = width*1/4+margin/2;
+        int CircleStart = getTextWidth(realityPaint,T)+margin*2;
         Log.e(TAG,"CircleStart =  "+CircleStart);
         //矩形开始的位置
-        int RectStart = width*1/4+margin;
+        int RectStart = CircleStart+margin;
         Log.e(TAG,"RectStart =  "+RectStart);
 
         //除去圆左边的宽度 ==>> 就是温度所要表示的总进度100%
         int sywidth =  width - CircleStart;
         //温度矩形的进度就等于温度除以总进度然后乘以总宽度
-        float v = fTemp / 100 * sywidth;
+        float v = (fTemp/100) * sywidth;
         Log.e(TAG,"V = "+v);
+
+        int CircleR = margin*3/2;
         //背景的绘制
         canvas.drawRect(RectStart, height-margin, width-margin, height+margin, backgroundPaint);
         canvas.drawCircle(width-margin , height, margin, backgroundPaint);
@@ -83,16 +84,28 @@ public class Thermometer extends View {
         if(fTemp < highTemp){
             realityPaint.setColor(Color.parseColor("#3DB475"));
             canvas.drawText(T,0,getMeasuredHeight()*2/3,realityPaint);
-            canvas.drawCircle(CircleStart,height,margin*3/2,realityPaint);
+            canvas.drawCircle(CircleStart,height,CircleR,realityPaint);
             canvas.drawRect(RectStart, height-margin, v+CircleStart, height+margin, realityPaint);
         }else{
             realityPaint.setColor(Color.parseColor("#F65402"));
             canvas.drawText(T,0,getMeasuredHeight()*2/3,realityPaint);
-            canvas.drawCircle(CircleStart,height,margin*3/2,realityPaint);
+            canvas.drawCircle(CircleStart,height,CircleR,realityPaint);
             canvas.drawRect(RectStart, height-margin, v+CircleStart, height+margin, realityPaint);
         }
 
     }
-
+    //计算文字宽度
+    public static int getTextWidth(Paint paint, String str) {
+        int iRet = 0;
+        if (str != null && str.length() > 0) {
+            int len = str.length();
+            float[] widths = new float[len];
+            paint.getTextWidths(str, widths);
+            for (int j = 0; j < len; j++) {
+                iRet += (int) Math.ceil(widths[j]);
+            }
+        }
+        return iRet;
+    }
 
 }

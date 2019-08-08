@@ -8,4 +8,6 @@
 
     <dimen name="dpi_10">10dp</dimen>
     <dimen name="dpi_15">15dp</dimen>
+    <dimen name="dpi_16">16dp</dimen>
+    <dimen name="dpi_45">45dp</dimen>
 </resources>

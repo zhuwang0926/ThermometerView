@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         thermometer = findViewById(R.id.termometer);
-        thermometer.setTemp(this,"10");
+        thermometer.setTemp(this,"50");
 
     }
 }
