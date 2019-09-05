@@ -77,7 +77,7 @@ public class ThermometerView extends View {
 
         int CircleR = margin*3/2;
         //背景的绘制
-        canvas.drawRect(RectStart, height-margin, width-margin, height+margin, backgroundPaint);
+        canvas.drawRect(v+CircleStart, height-margin, width-margin, height+margin, backgroundPaint);
         canvas.drawCircle(width-margin , height, margin, backgroundPaint);
         //根据温度的绘制
         //fTemp小于定义的高温则显示正常的绿色,否则显示高温红色
